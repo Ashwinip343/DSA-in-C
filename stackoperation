@@ -1,16 +1,8 @@
-/******************************************************************************
-
-                            Online C Compiler.
-                Code, Compile, Run and Debug C program online.
-Write your code in this editor and press "Run" button to compile and execute it.
-
-*******************************************************************************/
-
 #include<stdio.h>
 
-int s[10]={3,4,5,7};
-int top=3,n=5,i;
-int* push(){
+int s[10];
+int top=-1,n=10,i;
+int push(){
     int ele,pos;
     printf("Enter the element:");
     scanf("%d",&ele);
@@ -21,14 +13,24 @@ int* push(){
         s[top+1]=ele;
         top+=1;
     }
-    return s;
+    return 0;
 }
 int  pop(){
+    if(top==-1){
+        printf("Stack Underflow");
+    }
+    else{
     int val;
-    val=s[top]
+    val=s[top];
     top=top-1;
     return val;
-    
+}}
+
+int display(){
+    for(int i=0;i<=top;i++){
+        printf("%d\t",s[i]);
+    }
+}
 int peep(){
     printf("The topmost element is:%d",s[top]);
     return s[top];
@@ -48,7 +50,7 @@ int change(){
 int main(){
     int ch;
     
-    printf("1.Push\n2.Pop\n3.Peep\n4.Change\n");
+    printf("1.Push\n2.Pop\n3.Peep\n4.Change\n5.Display");
     while(ch!=0){
     printf("\nEnter choice or 0 to exit:");
     scanf("%d",&ch);
@@ -62,6 +64,8 @@ int main(){
     case 3: peep();
     break;
     case 4:change();
+    break;
+    case 5:display();
     break;
     default:printf("Please enter a correct choice:");
     
