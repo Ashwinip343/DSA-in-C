@@ -1,7 +1,8 @@
+//Stack implementation using array(static) 
 #include<stdio.h>
-
-int s[10];
-int top=-1,n=10,i;
+#define n 5;
+int s[n];
+int top=-1,i;
 int push(){
     int ele,pos;
     printf("Enter the element:");
