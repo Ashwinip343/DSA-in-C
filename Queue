@@ -2,7 +2,7 @@
 #include<stdio.h>
 int q[10];
 int f=-1,r=-1,n=10,i;
-int enqueue(){
+void enqueue(){
     int ele;
     printf("Enter the element:");
     scanf("%d",&ele);
@@ -14,7 +14,8 @@ int enqueue(){
             r=r+1;
         q[r]=ele;
 }
-int dequeue(){
+
+void dequeue(){
     int val;
     if(f==-1)
         printf("Queue Underflow");
@@ -28,16 +29,18 @@ int dequeue(){
     }
     
 }
-
-int traverse(){
+void peek(){
+    printf("The top is %d at index %d",q[r],r);
+    }
+void dispaly(){
     for(int i=f;i<=r;i++){
         printf("%d\t",q[i]);
     }
 }
-int main(){
+void main(){
     int ch;
     
-    printf("1.Queue\n2.Enqueue\n3.Traverse");
+    printf("1.Queue\n2.Enqueue\n3.Peek\n4.Display");
     while(ch!=0){
     printf("\nEnter choice or 0 to exit:");
     scanf("%d",&ch);
@@ -47,9 +50,11 @@ int main(){
     case 1: enqueue();
         break;
     case 2: dequeue();
-    break;
-    case 3:traverse();
-    break;
+       break;
+    case 3: peek();
+        break;
+    case 3:display();
+        break;
     default:printf("Please enter a correct choice:");
     
     }
