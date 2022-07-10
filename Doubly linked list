@@ -29,6 +29,15 @@ void create_list(int no){
   i++;
 }
 }
+
+void reverse_traversal(){
+ptr=R;
+while(ptr!=NULL){
+printf("[%u|%d|%u]->",ptr->LPTR,ptr->data,ptr->RPTR);
+ptr=ptr->LPTR;
+}
+}
+
 void traversal(){
 ptr=L;
 while(ptr!=NULL){
@@ -109,6 +118,8 @@ while(ch!=0){
 	case 4: delete_pos();
 		break;
 	case 5: traversal();
+		break;
+	case 6: reverse_traversal();
 		break;
 	default:printf("Please enter correct choice:");
 	}
