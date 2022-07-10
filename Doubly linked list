@@ -1,0 +1,118 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<conio.h>
+struct node{
+struct node *LPTR;
+int data;
+struct node *RPTR;
+}*ptr=NULL;
+struct node *L=NULL,*R=NULL;
+struct node *new1=NULL;
+
+
+void create_list(int no){
+  int i=0,d;
+  while(i<no){
+  new1=(struct node *)malloc(sizeof(struct node));
+  printf("Enter the data:");
+  scanf("%d",&d);
+  new1->data=d;
+  new1->LPTR=R;
+  new1->RPTR=NULL;
+  if(L==NULL || R==NULL){
+     L=R=new1;
+     }
+  else{
+  R->RPTR=new1;
+  R=new1;
+  }
+  i++;
+}
+}
+void traversal(){
+ptr=L;
+while(ptr!=NULL){
+printf("[%u|%d|%u]->",ptr->LPTR,ptr->data,ptr->RPTR);
+ptr=ptr->RPTR;
+}
+}
+void insert_front(){
+	int ele;
+	printf("Enter the data:");
+	scanf("%d",&ele);
+	new1=(struct node *)malloc(sizeof(struct node));
+	if(new1==NULL) {
+		printf("Memory insufficient");}
+	ptr=L;
+	L=new1;
+
+	new1->data=ele;
+	new1->LPTR=NULL;
+	new1->RPTR=ptr;
+	ptr->LPTR=new1;
+		     }
+void insert_end(){
+	int ele;
+	printf("Enter the data:");
+	scanf("%d",&ele);
+	new1=(struct node *)malloc(sizeof(struct node));
+	if(new1==NULL){
+		printf("Memory insufficient");}
+	ptr=L;
+	new1->data=ele;
+	while(ptr->RPTR!=NULL){
+	ptr=ptr->RPTR;}
+	new1->LPTR=ptr;
+	ptr->RPTR=new1;
+	new1->RPTR=NULL;
+	}
+void delete_front(){
+	ptr=L;
+	L=ptr->RPTR;
+	L->LPTR=NULL;
+}
+void delete_pos(){
+	int pos;
+	printf("Enter the position:");
+	scanf("%d",&pos);
+	int i=1;
+	ptr=L;
+	while(i!=pos){
+	      ptr=ptr->RPTR;
+	      i++;
+	}
+	ptr->LPTR->RPTR=ptr->RPTR;
+	ptr->RPTR->LPTR=ptr->LPTR;
+	ptr->LPTR=ptr->RPTR=NULL;
+}
+
+void main(){
+clrscr();
+int no;
+printf("Enter the number of nodes:");
+scanf("%d",&no);
+create_list(no);
+int ch;
+printf("SELECT THE OPERAITION:\n1.Insert at front\n2.Insert at end\n3.Delete at front\n4.Delete at any position\n5.Traverse\n 0 to EXIT");
+while(ch!=0){
+	printf("\nEnter choice:");
+	scanf("%d",&ch);
+	switch(ch){
+	case 0: printf("Program Exiting...");
+		break;
+	case 1: insert_front();
+		break;
+	case 2: insert_end();
+		break;
+	case 3: delete_front();
+		break;
+	case 4: delete_pos();
+		break;
+	case 5: traversal();
+		break;
+	default:printf("Please enter correct choice:");
+	}
+}
+getch();
+}
+
